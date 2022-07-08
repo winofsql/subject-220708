@@ -85,3 +85,13 @@ BEGIN
     TEST1('0001');
 END;
 ```
+
+- ### ディレクトリオブジェクト
+	- 権限
+	```sql
+	grant 
+		CREATE ANY DIRECTORY 
+		,DROP ANY DIRECTORY 
+	to LIGHTBOX
+	```
+	
