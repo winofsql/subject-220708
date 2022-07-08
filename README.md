@@ -96,5 +96,5 @@ END;
 	```
 	- 権限の確認
 	```sql
-	select * from USER_SYS_PRIVS
+	select * from USER_SYS_PRIVS where PRIVILEGE like '%DIR%'
 	```
