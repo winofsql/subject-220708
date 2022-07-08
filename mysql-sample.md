@@ -24,3 +24,4 @@ FROM
 ORDER BY
     社員マスタ.社員コード;
 ```
+![image](https://user-images.githubusercontent.com/1501327/177922825-f8298c5e-37c2-4ca3-b1b4-62539f4cb364.png)
