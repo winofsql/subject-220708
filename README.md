@@ -110,7 +110,7 @@ END;
 
 ### ディレクトリオブジェクトを使用したプロシージャ
 ```sql
-PROCEDURE LIST_MEMBER
+CREATE OR REPLACE PROCEDURE LIST_MEMBER
 (
 	/* カーソルの範囲指定用  */
 	PM_STRING IN VARCHAR2
