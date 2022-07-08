@@ -28,11 +28,6 @@ ORDER BY
 
 ```sql
 SELECT
-    *
-FROM
-    社員マスタ;
-
-SELECT
     A.社員コード,
     A.氏名,
     A.フリガナ,
