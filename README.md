@@ -87,11 +87,11 @@ END;
 ```
 
 - ### ディレクトリオブジェクト
-	- 権限
+	- 権限( SYSTEM でログイン )
 	```sql
 	grant 
 		CREATE ANY DIRECTORY 
 		,DROP ANY DIRECTORY 
-	to LIGHTBOX
+	to LIGHTBOX00
 	```
 	
