@@ -1,5 +1,20 @@
 # subject-220708
 
+### プロシージャ用デバッグテーブル
+```sql
+create table proc_debug (
+	data1 number,
+	data2 number,
+	data3 varchar2(100),
+	data4 varchar2(100),
+	data5 date,
+	data6 date
+)
+```
+```sql
+insert into proc_debug values(null,null,null,null,null,null)
+```
+
 ### [簡易PL/SQLビルダー](https://winofsql.jp/download/easy_plsql_builder.zip)
 ![image](https://user-images.githubusercontent.com/1501327/177899102-df81f461-0c06-4b1f-bb00-b5b415f7d97f.png)
 ```sql
@@ -41,3 +56,27 @@ END;
 ```
 
 ### [Oracle】PL/SQL入門](https://qiita.com/nkojima/items/93a9c01741965f11bb8c)
+
+### プローシージャサンプル
+```sql
+create or replace procedure TEST1
+(
+    code     IN   varchar2
+)
+AS
+    CURSOR cur1 IS
+        SELECT 氏名,フリガナ FROM 社員マスタ
+        WHERE 社員コード = code;
+
+    syain_rec cur1%ROWTYPE;
+
+BEGIN
+    OPEN cur1;
+        FETCH cur1 INTO syain_rec;
+    CLOSE cur1;
+
+    name1   := syain_rec.氏名;
+    name2   := syain_rec.フリガナ;
+
+END;
+```
