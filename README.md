@@ -98,7 +98,7 @@ END;
 	```sql
 	select * from USER_SYS_PRIVS where PRIVILEGE like '%DIR%'
 	```
-	- 出力ディレクトリ
+	- 出力ディレクトリ( Oracle がある PC のフォルダ )
 	```sql
 	CREATE DIRECTORY LOGDIR
    		AS 'C:\app\lightbox\plsql_builder'
