@@ -103,4 +103,7 @@ END;
 	CREATE DIRECTORY LOGDIR
    		AS 'C:\app\lightbox\plsql_builder'
 	```
-	
+	- 確認
+	```sql
+	SELECT * FROM ALL_DIRECTORIES
+	```
