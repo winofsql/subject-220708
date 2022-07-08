@@ -107,3 +107,76 @@ END;
 	```sql
 	SELECT * FROM ALL_DIRECTORIES
 	```
+
+### ディレクトリオブジェクトを使用したプロシージャ
+```sql
+PROCEDURE LIST_MEMBER
+(
+	/* カーソルの範囲指定用  */
+	PM_STRING IN VARCHAR2
+)
+
+/**********************************************************/
+/* 変数の定義 */
+/**********************************************************/
+AS
+	WK_VALUE	VARCHAR2(2000);
+
+	/* カーソルの定義(主に複数読み込み用)  */
+	CURSOR cur_main IS
+		SELECT
+			社員コード||','||
+			氏名||','||
+			フリガナ||','||
+			所属||','||
+			性別||','||
+			作成日||','||
+			更新日||','||
+			給与||','||
+			手当||','||
+			管理者||','||
+			生年月日
+			from "社員マスタ"
+		where 社員コード <= PM_STRING;
+
+	-- ディスクへ書き込むファイル名
+	WK_FILENAME VARCHAR2(100) := 'syain00.csv';
+	-- ファイルにアクセスする為のハンドルの定義
+	FILEHANDLE UTL_FILE.FILE_TYPE;
+
+/**********************************************************/
+/* 処理開始 */
+/**********************************************************/
+BEGIN
+	DBMS_OUTPUT.PUT_LINE('デバッグ:開始');
+	DBMS_OUTPUT.PUT_LINE('デバッグ:引数:'||PM_STRING);
+
+	/* カーソルを開く */
+	OPEN cur_main;
+
+	-- 第一引数は、ディレクトリオブジェクトの名称( 但し文字列 )
+	FILEHANDLE := UTL_FILE.FOPEN( 'LOGDIR', WK_FILENAME, 'w' );
+
+	/* ループ処理(ブロック) */
+	LOOP 
+		/* 定義したレコード変数に読み込み */
+		FETCH cur_main INTO WK_VALUE;
+		/* カーソルに対するシステム変数でデータ終わりを判断 */
+		if cur_main%NOTFOUND then 
+			/* ループ処理を脱出 */
+			EXIT; 
+		end if; 
+
+		-- 書き込み
+		UTL_FILE.PUT_LINE(FILEHANDLE,WK_VALUE);
+	 
+	END LOOP; 
+
+	-- ファイルを閉じる
+	UTL_FILE.FCLOSE( FILEHANDLE );
+
+	/* カーソルを閉じる */
+	CLOSE cur_main;
+
+END;
+```
