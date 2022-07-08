@@ -55,7 +55,7 @@ BEGIN
 END;
 ```
 
-### [Oracle】PL/SQL入門](https://qiita.com/nkojima/items/93a9c01741965f11bb8c)
+### [【Oracle】PL/SQL入門](https://qiita.com/nkojima/items/93a9c01741965f11bb8c)
 
 ### プローシージャサンプル
 ```sql
