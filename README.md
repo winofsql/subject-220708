@@ -75,8 +75,7 @@ BEGIN
         FETCH cur1 INTO syain_rec;
     CLOSE cur1;
 
-    name1   := syain_rec.氏名;
-    name2   := syain_rec.フリガナ;
+    update PROC_DEBUG set DATA3 = syain_rec.氏名, DATA4 = syain_rec.フリガナ;
 
 END;
 ```
