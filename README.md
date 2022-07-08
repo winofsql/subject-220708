@@ -79,3 +79,9 @@ BEGIN
 
 END;
 ```
+```sql
+DECLARE
+BEGIN
+    TEST1('0001');
+END;
+```
